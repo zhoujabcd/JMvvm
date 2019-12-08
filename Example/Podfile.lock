@@ -1,0 +1,42 @@
+PODS:
+  - Expecta (1.0.6)
+  - "Expecta+Snapshots (3.1.1)":
+    - Expecta (~> 1.0)
+    - FBSnapshotTestCase/Core (~> 2.0)
+    - Specta (~> 1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - JMvvm (0.1.1)
+  - Specta (1.0.7)
+
+DEPENDENCIES:
+  - Expecta
+  - "Expecta+Snapshots"
+  - FBSnapshotTestCase
+  - JMvvm (from `../JMvvm.podspec`)
+  - Specta
+
+SPEC REPOS:
+  trunk:
+    - Expecta
+    - "Expecta+Snapshots"
+    - FBSnapshotTestCase
+    - Specta
+
+EXTERNAL SOURCES:
+  JMvvm:
+    :podspec: "../JMvvm.podspec"
+
+SPEC CHECKSUMS:
+  Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
+  "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  JMvvm: 4e0554ddcf5ce12492f8115bc6c8b840f4a59774
+  Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
+
+PODFILE CHECKSUM: 98e8eb61768b86ad4822646573f0db8ef3016395
+
+COCOAPODS: 1.8.4

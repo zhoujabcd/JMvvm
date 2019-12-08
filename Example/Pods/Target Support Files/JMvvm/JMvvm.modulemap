@@ -1,0 +1,6 @@
+framework module JMvvm {
+  umbrella header "JMvvm-umbrella.h"
+
+  export *
+  module * { export * }
+}

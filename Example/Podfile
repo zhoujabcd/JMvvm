@@ -1,9 +1,10 @@
 use_frameworks!
 
-platform :ios, '8.0'
+platform :ios, '10.0'
 
 target 'JMvvm_Example' do
-  pod 'JMvvm', :path => '../'
+  #pod 'JMvvm', :path => '../'
+	pod 'JMvvm',:podspec => '../JMvvm.podspec'
 
   target 'JMvvm_Tests' do
     inherit! :search_paths
