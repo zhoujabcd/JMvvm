@@ -40,20 +40,30 @@ NS_ASSUME_NONNULL_END
 
 Get the ViewModel through JViewModelProviders. If there is no instance ViewModel before, a new ViewModel will be created. The scope of the ViewModel is managed based on the incoming ViewController. Different ViewControllers will get different ViewModel.
 ```ruby
-ViewModel *viewModel = [[JViewModelProviders ofViewController:self]get:ViewModel.class];
+ViewModel *viewModel = [[JViewModelProviders ofViewController:[[ViewController alloc]init]]get:ViewModel.class];
 ```
-
-Add an observer for attributes that need to observe changes
+Add a ViewModel with scope of the whole application
+```ruby
+ViewModel *viewModel = [[JViewModelProviders ofApplicaton:[UIApplication sharedApplication]]get:ViewModel.class];
+```
+Add an observer for attributes that need to observe changes，path is used to mark the observer for easy deletion
 ```ruby
 [viewModel.data observer:^{
         NSLog(@"!-- viewModel observer in ViewController");
-    }];
+    } atPath:@"ViewController"];
 ```
 Through the setValue method of jmutablelivedata to change the object value, the observer can receive the relevant object change events, and get the object content through getValue
 ```ruby
 [viewModel.data setValue:@"value change in ViewController"];
 ```
-
+Delete an observer
+```ruby
+[viewModel.data removeObserve:@"ViewController"];
+```
+Delete all observer
+```ruby
+[viewModel.data removeAllObserve];
+```
 
 
 ## Author
