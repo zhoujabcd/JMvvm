@@ -10,7 +10,6 @@
 
 @class UIViewController;
 @class JViewModelProvider;
-@class UIApplication;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,10 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)shareInstance;
 
 + (JViewModelProvider *)ofViewController:(UIViewController *)viewController;
-
-+ (JViewModelProvider *)ofApplication:(UIApplication *)application;
-
-+ (void)clean;
 
 - (instancetype)init;
 

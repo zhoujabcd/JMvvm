@@ -40,28 +40,6 @@ static JViewModelProviders *ins = nil;
     return provider;
 }
 
-+ (JViewModelProvider *)ofApplication:(UIApplication *)application
-{
-    NSString *mapName = [[NSString alloc]initWithUTF8String:object_getClassName(application)]
-    ;
-    
-    JViewModelProvider *provider = [JViewModelProviders.shareInstance.providerMap objectForKey:mapName];
-    
-    if(provider == nil)
-    {
-        provider = [[JViewModelProvider alloc]init];
-        
-        [JViewModelProviders.shareInstance.providerMap setObject:provider forKey:mapName];
-    }
-    
-    return provider;
-}
-
-+ (void)clean
-{
-    [JViewModelProviders.shareInstance.providerMap removeAllObjects];
-}
-
 - (instancetype)init
 {
     self = [super init];

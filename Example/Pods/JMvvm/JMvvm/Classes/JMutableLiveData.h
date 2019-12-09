@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
     T _value;
 }
 
-@property (nonatomic, copy)NSMutableDictionary<NSString*, JObserver *>* observerDic;
+@property (nonatomic, copy)NSMutableArray<JObserver *>* observerList;
 
 -(instancetype)init;
 
@@ -25,11 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(T)getValue;
 
--(void)observer:(void(^)(void))callBack atPath:(NSString *)path;
-
--(void)removeObserve:(NSString *)path;
-
--(void)removeAllObserve;
+-(void)observer:(void(^)(void))callBack;
 
 @end
 

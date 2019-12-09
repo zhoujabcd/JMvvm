@@ -10,6 +10,10 @@
 #endif
 #endif
 
+#import "JMutableLiveData.h"
+#import "JObserver.h"
+#import "JViewModelProvider.h"
+#import "JViewModelProviders.h"
 
 FOUNDATION_EXPORT double JMvvmVersionNumber;
 FOUNDATION_EXPORT const unsigned char JMvvmVersionString[];

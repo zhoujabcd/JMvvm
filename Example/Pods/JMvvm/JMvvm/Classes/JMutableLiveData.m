@@ -15,7 +15,7 @@
 {
     self = [super init];
     if (self) {
-        _observerDic = [[NSMutableDictionary alloc]init];
+        _observerList = [[NSMutableArray alloc]init];
         
         [self addObserver:self forKeyPath:@"_value" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -26,16 +26,10 @@
 {
     if ([keyPath isEqualToString:@"_value"])
     {
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        
-        __weak typeof(self) wS = self;
-        
-        dispatch_async(queue, ^{
-            for(JObserver *o in wS.observerDic.allValues)
-            {
-                o.callBack();
-            }
-        });
+        for(JObserver *o in _observerList)
+        {
+            o.callBack();
+        }
     } else
     {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -56,30 +50,20 @@
 {
     [self removeObserver:self forKeyPath:@"_value"];
     
-    [_observerDic removeAllObjects];
+    [_observerList removeAllObjects];
     
-    _observerDic = nil;
+    _observerList = nil;
     
     _value = nil;
 }
 
-- (void)observer:(void (^)(void))callBack atPath:(nonnull NSString *)path
+- (void)observer:(void (^)(void))callBack
 {
     JObserver *o = [[JObserver alloc]init];
     
     [o setCallBack:callBack];
     
-    [_observerDic setObject:o forKey:path];
-}
-
-- (void)removeObserve:(NSString *)path
-{
-    [_observerDic removeObjectForKey:path];
-}
-
-- (void)removeAllObserve
-{
-    [_observerDic removeAllObjects];
+    [_observerList addObject:o];
 }
 
 @end
