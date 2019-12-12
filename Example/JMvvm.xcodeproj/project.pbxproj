@@ -24,6 +24,10 @@
 		64F889B5E893FED449597233 /* Pods_JMvvm_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A510C8CE6EE8C830D27E85D /* Pods_JMvvm_Tests.framework */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		D0C9691D23A1409C001FE3AB /* JMutableLiveData.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9691723A1409C001FE3AB /* JMutableLiveData.m */; };
+		D0C9691E23A1409C001FE3AB /* JViewModelProviders.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9691A23A1409C001FE3AB /* JViewModelProviders.m */; };
+		D0C9691F23A1409C001FE3AB /* JObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9691B23A1409C001FE3AB /* JObserver.m */; };
+		D0C9692023A1409C001FE3AB /* JViewModelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = D0C9691C23A1409C001FE3AB /* JViewModelProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,14 @@
 		9D89F14E1888FF83266F0C87 /* Pods-JMvvm_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JMvvm_Tests.debug.xcconfig"; path = "Target Support Files/Pods-JMvvm_Tests/Pods-JMvvm_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA6C22BC55615346D215F992 /* Pods_JMvvm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JMvvm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8991EBA7715E6FE04B3BC7C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D0C9691523A1409C001FE3AB /* JObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JObserver.h; sourceTree = "<group>"; };
+		D0C9691623A1409C001FE3AB /* JViewModelProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JViewModelProvider.h; sourceTree = "<group>"; };
+		D0C9691723A1409C001FE3AB /* JMutableLiveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMutableLiveData.m; sourceTree = "<group>"; };
+		D0C9691823A1409C001FE3AB /* JMutableLiveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMutableLiveData.h; sourceTree = "<group>"; };
+		D0C9691923A1409C001FE3AB /* JViewModelProviders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JViewModelProviders.h; sourceTree = "<group>"; };
+		D0C9691A23A1409C001FE3AB /* JViewModelProviders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JViewModelProviders.m; sourceTree = "<group>"; };
+		D0C9691B23A1409C001FE3AB /* JObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JObserver.m; sourceTree = "<group>"; };
+		D0C9691C23A1409C001FE3AB /* JViewModelProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JViewModelProvider.m; sourceTree = "<group>"; };
 		D9C39C7F5D2F4D814C4CB08F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E1DC50F33D4FD6ABC62097DB /* Pods-JMvvm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JMvvm_Tests.release.xcconfig"; path = "Target Support Files/Pods-JMvvm_Tests/Pods-JMvvm_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EF353BB47B6E0A554DBA806F /* Pods-JMvvm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JMvvm_Example.release.xcconfig"; path = "Target Support Files/Pods-JMvvm_Example/Pods-JMvvm_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +144,7 @@
 		6003F593195388D20070C39A /* Example for JMvvm */ = {
 			isa = PBXGroup;
 			children = (
+				D0C9691423A1405F001FE3AB /* Class */,
 				6003F59C195388D20070C39A /* JAppDelegate.h */,
 				6003F59D195388D20070C39A /* JAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -194,6 +207,21 @@
 				E1DC50F33D4FD6ABC62097DB /* Pods-JMvvm_Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D0C9691423A1405F001FE3AB /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				D0C9691823A1409C001FE3AB /* JMutableLiveData.h */,
+				D0C9691723A1409C001FE3AB /* JMutableLiveData.m */,
+				D0C9691523A1409C001FE3AB /* JObserver.h */,
+				D0C9691B23A1409C001FE3AB /* JObserver.m */,
+				D0C9691623A1409C001FE3AB /* JViewModelProvider.h */,
+				D0C9691C23A1409C001FE3AB /* JViewModelProvider.m */,
+				D0C9691923A1409C001FE3AB /* JViewModelProviders.h */,
+				D0C9691A23A1409C001FE3AB /* JViewModelProviders.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,9 +420,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C9691E23A1409C001FE3AB /* JViewModelProviders.m in Sources */,
 				6003F59E195388D20070C39A /* JAppDelegate.m in Sources */,
+				D0C9691F23A1409C001FE3AB /* JObserver.m in Sources */,
+				D0C9692023A1409C001FE3AB /* JViewModelProvider.m in Sources */,
 				6003F5A7195388D20070C39A /* JViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				D0C9691D23A1409C001FE3AB /* JMutableLiveData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

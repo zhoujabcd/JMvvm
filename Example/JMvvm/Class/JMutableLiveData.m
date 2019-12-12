@@ -9,13 +9,37 @@
 #import "JMutableLiveData.h"
 #import "JObserver.h"
 
+@interface JMutableLiveData<T>()
+{
+    T _value;
+    
+   
+}
+@end
+
 @implementation JMutableLiveData
+{
+    NSLock *_lock;
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:@"_value"];
+    
+    _observerDic = nil;
+    
+    _value = nil;
+    
+    _lock = nil;
+}
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         _observerDic = [[NSMutableDictionary alloc]init];
+        
+        _lock = [[NSLock alloc]init];
         
         [self addObserver:self forKeyPath:@"_value" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -31,9 +55,14 @@
         __weak typeof(self) wS = self;
         
         dispatch_async(queue, ^{
-            for(JObserver *o in wS.observerDic.allValues)
+            __strong typeof(self) sS = wS;
+            
+            if(sS != nil)
             {
-                o.callBack();
+                for(JObserver *o in sS.observerDic.allValues)
+                {
+                    o.callBack();
+                }
             }
         });
     } else
@@ -52,34 +81,35 @@
     return _value;
 }
 
-- (void)dealloc
-{
-    [self removeObserver:self forKeyPath:@"_value"];
-    
-    [_observerDic removeAllObjects];
-    
-    _observerDic = nil;
-    
-    _value = nil;
-}
-
 - (void)observer:(void (^)(void))callBack atPath:(nonnull NSString *)path
 {
     JObserver *o = [[JObserver alloc]init];
     
     [o setCallBack:callBack];
     
-    [_observerDic setObject:o forKey:path];
+    [_lock lock];
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithDictionary:_observerDic];
+    [mDic setObject:o forKey:path];
+    _observerDic = mDic;
+    [_lock unlock];
 }
 
 - (void)removeObserve:(NSString *)path
 {
-    [_observerDic removeObjectForKey:path];
+    [_lock lock];
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithDictionary:_observerDic];
+    [mDic removeObjectForKey:path];
+    _observerDic = mDic;
+    [_lock unlock];
 }
 
 - (void)removeAllObserve
 {
-    [_observerDic removeAllObjects];
+    [_lock lock];
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithDictionary:_observerDic];
+    [mDic removeAllObjects];
+    _observerDic = mDic;
+    [_lock unlock];
 }
 
 @end
