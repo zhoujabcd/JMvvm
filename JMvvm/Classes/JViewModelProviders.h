@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JViewModelProviders : NSObject
 
-@property (nonatomic, copy)NSMutableDictionary* providerMap;
+@property (nonatomic, copy)NSDictionary* providerMap;
 
 + (instancetype)shareInstance;
 
@@ -26,7 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)clean;
 
-- (instancetype)init;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
+
+- (void)addProvider:(JViewModelProvider *)provider key:(NSString *)key;
+
+- (void)removeAllProvider;
 
 @end
 

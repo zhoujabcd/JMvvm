@@ -13,6 +13,9 @@
 static JViewModelProviders *ins = nil;
 
 @implementation JViewModelProviders
+{
+    NSLock *_lock;
+}
 
 + (instancetype)shareInstance
 {
@@ -21,6 +24,13 @@ static JViewModelProviders *ins = nil;
         ins = [[self alloc]init];
     });
     return ins;
+}
+
+-(void)dealloc
+{
+    _providerMap = nil;
+    
+    _lock = nil;
 }
 
 + (JViewModelProvider *)ofViewController:(UIViewController *)viewController
@@ -34,7 +44,7 @@ static JViewModelProviders *ins = nil;
     {
         provider = [[JViewModelProvider alloc]init];
         
-        [JViewModelProviders.shareInstance.providerMap setObject:provider forKey:mapName];
+        [JViewModelProviders.shareInstance addProvider:provider key:mapName];
     }
     
     return provider;
@@ -51,7 +61,7 @@ static JViewModelProviders *ins = nil;
     {
         provider = [[JViewModelProvider alloc]init];
         
-        [JViewModelProviders.shareInstance.providerMap setObject:provider forKey:mapName];
+        [JViewModelProviders.shareInstance addProvider:provider key:mapName];
     }
     
     return provider;
@@ -59,7 +69,7 @@ static JViewModelProviders *ins = nil;
 
 + (void)clean
 {
-    [JViewModelProviders.shareInstance.providerMap removeAllObjects];
+    [JViewModelProviders.shareInstance removeAllProvider];
 }
 
 - (instancetype)init
@@ -67,8 +77,28 @@ static JViewModelProviders *ins = nil;
     self = [super init];
     if (self) {
         _providerMap = [[NSMutableDictionary alloc]init];
+        
+        _lock = [[NSLock alloc]init];
     }
     return self;
+}
+
+- (void)addProvider:(JViewModelProvider *)provider key:(NSString *)key
+{
+    [_lock lock];
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithDictionary:JViewModelProviders.shareInstance.providerMap];
+    [mDic setObject:provider forKey:key];
+    JViewModelProviders.shareInstance.providerMap = mDic;
+    [_lock unlock];
+}
+
+- (void)removeAllProvider
+{
+    [_lock lock];
+    NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithDictionary:JViewModelProviders.shareInstance.providerMap];
+    [mDic removeAllObjects];
+    JViewModelProviders.shareInstance.providerMap = mDic;
+    [_lock unlock];
 }
 
 @end
