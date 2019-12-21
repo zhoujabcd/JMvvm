@@ -12,8 +12,6 @@
 @interface JMutableLiveData<T>()
 {
     T _value;
-    
-   
 }
 @end
 

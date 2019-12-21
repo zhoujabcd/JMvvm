@@ -14,12 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JMutableLiveData<T> : NSObject
 {
-    T _value;
+    
 }
 
-@property (nonatomic, copy)NSMutableDictionary<NSString*, JObserver *>* observerDic;
+@property (nonatomic, copy)NSDictionary<NSString*, JObserver *>* observerDic;
 
--(instancetype)init;
+-(instancetype)init NS_DESIGNATED_INITIALIZER;
 
 -(void)setValue:(T)value;
 

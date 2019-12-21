@@ -10,4 +10,9 @@
 
 @implementation JObserver
 
+- (void)dealloc
+{
+    _callBack = nil;
+}
+
 @end

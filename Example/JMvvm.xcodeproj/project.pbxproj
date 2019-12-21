@@ -76,6 +76,7 @@
 		D0C9691A23A1409C001FE3AB /* JViewModelProviders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JViewModelProviders.m; sourceTree = "<group>"; };
 		D0C9691B23A1409C001FE3AB /* JObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JObserver.m; sourceTree = "<group>"; };
 		D0C9691C23A1409C001FE3AB /* JViewModelProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JViewModelProvider.m; sourceTree = "<group>"; };
+		D0C9692123AE59EC001FE3AB /* JMvvm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JMvvm.h; sourceTree = "<group>"; };
 		D9C39C7F5D2F4D814C4CB08F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E1DC50F33D4FD6ABC62097DB /* Pods-JMvvm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JMvvm_Tests.release.xcconfig"; path = "Target Support Files/Pods-JMvvm_Tests/Pods-JMvvm_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EF353BB47B6E0A554DBA806F /* Pods-JMvvm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JMvvm_Example.release.xcconfig"; path = "Target Support Files/Pods-JMvvm_Example/Pods-JMvvm_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 				D0C9691C23A1409C001FE3AB /* JViewModelProvider.m */,
 				D0C9691923A1409C001FE3AB /* JViewModelProviders.h */,
 				D0C9691A23A1409C001FE3AB /* JViewModelProviders.m */,
+				D0C9692123AE59EC001FE3AB /* JMvvm.h */,
 			);
 			path = Class;
 			sourceTree = "<group>";

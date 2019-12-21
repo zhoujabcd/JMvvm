@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JViewModelProvider : NSObject
 
-@property(nonatomic, copy)NSMutableDictionary *modelMap;
+@property(nonatomic, copy)NSDictionary *modelMap;
 
-- (instancetype)init;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 - (id)get:(Class)className;
 
