@@ -31,6 +31,33 @@
     return self;
 }
 
+- (id)getByName:(NSString *)classStr
+{
+    Class className = NSClassFromString(classStr);
+    
+    if(className == nil)
+    {
+        NSLog(@"Jvvm: JViewModelProvider get a wrong classStr");
+        
+        return nil;
+    }
+    
+    id model = [_modelMap objectForKey:classStr];
+    
+    if(model == nil)
+    {
+        model = [[className alloc]init];
+        
+        [_lock lock];
+        NSMutableDictionary *mDic = [[NSMutableDictionary alloc]initWithDictionary:_modelMap];
+        [mDic setObject:model forKey:classStr];
+        _modelMap = mDic;
+        [_lock unlock];
+    }
+    
+    return model;
+}
+
 - (id)get:(Class)className
 {
     NSString *classStr = NSStringFromClass(className);

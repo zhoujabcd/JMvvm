@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JMvvm'
-  s.version          = '0.4.0'
+  s.version          = '0.4.1'
   s.summary          = '这是一个mvvm框架.'
 
 # This description is used to generate tags and improve search results.
