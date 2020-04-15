@@ -19,17 +19,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy)NSDictionary<NSString*, JObserver *>* observerDic;
 
--(instancetype)init NS_DESIGNATED_INITIALIZER;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
--(void)setValue:(T)value;
+- (instancetype)initWithData:(id)value;
 
--(T)getValue;
+- (instancetype)initWithDataByCopy:(id)value;
 
--(void)observer:(void(^)(void))callBack atPath:(NSString *)path;
+- (instancetype)initWithDataByMutableCopy:(id)value;
 
--(void)removeObserve:(NSString *)path;
+- (void)updateData:(T _Nullable)value;
 
--(void)removeAllObserve;
+- (void)updateDataByCopy:(T _Nullable)value;
+
+- (void)updateDataByMutableCopy:(T _Nullable)value;
+
+- (T)getData;
+
+- (void)observer:(void(^)(void))callBack atPath:(NSString *)path;
+
+- (void)removeObserve:(NSString *)path;
+
+- (void)removeAllObserve;
 
 @end
 

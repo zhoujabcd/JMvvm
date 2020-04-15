@@ -41,6 +41,44 @@
         
         [self addObserver:self forKeyPath:@"_value" options:NSKeyValueObservingOptionNew context:nil];
     }
+    
+//    NSLog(@"init");
+    
+    return self;
+}
+
+- (instancetype)initWithData:(id)value
+{
+    self = [self init];
+    
+//    NSLog(@"initWithData");
+    
+    _value = value;
+    
+    return self;
+}
+
+- (instancetype)initWithDataByCopy:(id)value
+{
+    self = [self init];
+    
+//    NSLog(@"initWithData");
+    id copyValue = [value copy];
+    
+     _value = copyValue;
+    
+    return self;
+}
+
+- (instancetype)initWithDataByMutableCopy:(id)value
+{
+    self = [self init];
+    
+//    NSLog(@"initWithData");
+    id copyValue = [value mutableCopy];
+    
+     _value = copyValue;
+    
     return self;
 }
 
@@ -69,12 +107,26 @@
     }
 }
 
-- (void)setValue:(id)value
+- (void)updateDataByMutableCopy:(id)value
+{
+    id copyValue = [value mutableCopy];
+    
+    [self setValue:copyValue forKey:@"_value"];
+}
+
+- (void)updateDataByCopy:(id)value
+{
+    id copyValue = [value copy];
+    
+    [self setValue:copyValue forKey:@"_value"];
+}
+
+- (void)updateData:(id)value
 {
     [self setValue:value forKey:@"_value"];
 }
 
--(id)getValue
+-(id)getData
 {
     return _value;
 }
